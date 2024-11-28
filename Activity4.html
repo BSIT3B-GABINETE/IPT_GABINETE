@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shane's Portfolio</title>
+    <link rel="stylesheet" href="site.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<style>
+  
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Base color */
+    color: white;
+    position: relative;
+}
+
+/* Banner Header Styling */
+.banner-header {
+    background-color: #46153D; /* Banner color */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Shadow effect sa banner */
+}
+
+.banner-header .logo img {
+    width: 80px; /* Adjust the size of the logo */
+}
+
+.banner-header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.banner-header nav ul li {
+    margin-left: 20px;
+}
+
+.banner-header nav ul li a {
+    color: white; /* Text color ng navigation links */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Add hover effect for navigation links */
+.banner-header nav ul li a:hover {
+    color: #FF0DEE; /* Accent color on hover */
+    transition: color 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+}
+
+.intro-text {
+    max-width: 50%;
+}
+
+/* Orbitron font for h1, h2, h3 */
+.intro-text h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.intro-text h1 {
+    font-size: 2.5rem;
+    color: #FFFFFF;
+}
+
+.intro-text h2 {
+    font-size: 3rem;
+    color: #FF0DEE; /* Accent color */
+    margin-top: -20px;
+}
+
+.intro-text h3 {
+    font-size: 2rem;
+    color: #FFFFFF;
+}
+
+.highlight {
+    color: #FF0DEE; /* Accent color */
+}
+
+.social-icons {
+    margin: 20px 0;
+}
+
+.social-icons a {
+    margin-right: 15px;
+    color: #FF0DEE; /* Accent color for social icons */
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF0DEE; /* Accent color for button */
+    color: #121212; /* Text color for button */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Profile Picture - Circle Shape with Shadow */
+.profile-picture {
+    background-color: #FF0DEE; /* Accent color around profile picture */
+    padding: 20px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%; /* Ginawang bilog ang container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 20px 5px rgba(255, 13, 238, 0.7); /* Shadow effect */
+}
+
+.profile-picture img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* Wipe Transition */
+#wipe-effect {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: #FF0DEE; /* Accent color for wipe effect */
+    z-index: 9999;
+    transform: translateX(0);
+    transition: transform 0.7s ease;
+}
+
+.wipe-active {
+    transform: translateX(-100%);
+}
+</style>
+
+
+
+
+<body>
+
+    <header class="banner-header">
+        <div class="logo">
+            <img src="logoo.png" width="100" height="40" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="intro-text">
+            <h1>Hello, It's Me</h1>
+            <h2>Shane Boots</h2>
+            <p>And I'm a <span class="highlight"><b>Frontend Developer</b></span></p>
+            <p>With a keen eye for design and a strong focus on user experience, I craft responsive and engaging websites.</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+                <a href="https://LinkedIn.com/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                <a href="https://Instagram.com/"><i class="fab fa-instagram"></i></a> 
+            </div>
+            <a href="#" class="btn">Download CV</a>
+        </div>
+        <div class="profile-picture">
+            <img src="pic.png" alt="Shane Boots">
+        </div>
+    </section>
+
+    <!-- Wipe Effect Div -->
+    <div id="wipe-effect"></div>
+
+    <!-- JavaScript for wipe transition -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Handle internal links with transition effect
+            document.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    if (link.hostname === window.location.hostname) {
+                        e.preventDefault(); // Prevent default link behavior
+
+                        // Trigger wipe effect by adding class
+                        const wipe = document.getElementById('wipe-effect');
+                        wipe.classList.add('wipe-active');
+
+                        // Navigate after transition completes (700ms)
+                        setTimeout(function() {
+                            window.location.href = link.href;
+                        }, 700); // Match the CSS transition time
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
